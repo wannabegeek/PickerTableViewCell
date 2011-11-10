@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E29FBE09146BAF830090B25A /* IntegerInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FBE08146BAF830090B25A /* IntegerInputTableViewCell.m */; };
+		E2CA1A62146B09E00070B8B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CA1A61146B09E00070B8B9 /* UIKit.framework */; };
+		E2CA1A64146B09E00070B8B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CA1A63146B09E00070B8B9 /* Foundation.framework */; };
+		E2CA1A66146B09E00070B8B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CA1A65146B09E00070B8B9 /* CoreGraphics.framework */; };
+		E2CA1A6C146B09E10070B8B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2CA1A6A146B09E10070B8B9 /* InfoPlist.strings */; };
+		E2CA1A6E146B09E10070B8B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A6D146B09E10070B8B9 /* main.m */; };
+		E2CA1A72146B09E10070B8B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A71146B09E10070B8B9 /* AppDelegate.m */; };
+		E2CA1A75146B09E10070B8B9 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2CA1A73146B09E10070B8B9 /* MainStoryboard_iPhone.storyboard */; };
+		E2CA1A78146B09E10070B8B9 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2CA1A76146B09E10070B8B9 /* MainStoryboard_iPad.storyboard */; };
+		E2CA1A7B146B09E10070B8B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A7A146B09E10070B8B9 /* ViewController.m */; };
+		E2CA1A86146B0A550070B8B9 /* DateInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A85146B0A550070B8B9 /* DateInputTableViewCell.m */; };
+		E2CA1A89146B0CC80070B8B9 /* StringInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A88146B0CC80070B8B9 /* StringInputTableViewCell.m */; };
+		E2CA1A8C146B0DB00070B8B9 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A8A146B0DB00070B8B9 /* UIColor+Custom.m */; };
+		E2CA1A97146C49870070B8B9 /* PickerInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A96146C49870070B8B9 /* PickerInputTableViewCell.m */; };
+		E2CA1A9B146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A9A146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E29FBE07146BAF830090B25A /* IntegerInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerInputTableViewCell.h; sourceTree = "<group>"; };
+		E29FBE08146BAF830090B25A /* IntegerInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegerInputTableViewCell.m; sourceTree = "<group>"; };
+		E2CA1A5D146B09E00070B8B9 /* PickerCellDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickerCellDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2CA1A61146B09E00070B8B9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E2CA1A63146B09E00070B8B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E2CA1A65146B09E00070B8B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E2CA1A69146B09E00070B8B9 /* PickerCellDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickerCellDemo-Info.plist"; sourceTree = "<group>"; };
+		E2CA1A6B146B09E10070B8B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E2CA1A6D146B09E10070B8B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E2CA1A6F146B09E10070B8B9 /* PickerCellDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PickerCellDemo-Prefix.pch"; sourceTree = "<group>"; };
+		E2CA1A70146B09E10070B8B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E2CA1A71146B09E10070B8B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E2CA1A74146B09E10070B8B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		E2CA1A77146B09E10070B8B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		E2CA1A79146B09E10070B8B9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E2CA1A7A146B09E10070B8B9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E2CA1A84146B0A550070B8B9 /* DateInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateInputTableViewCell.h; sourceTree = "<group>"; };
+		E2CA1A85146B0A550070B8B9 /* DateInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateInputTableViewCell.m; sourceTree = "<group>"; };
+		E2CA1A87146B0CC70070B8B9 /* StringInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringInputTableViewCell.h; sourceTree = "<group>"; };
+		E2CA1A88146B0CC80070B8B9 /* StringInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringInputTableViewCell.m; sourceTree = "<group>"; };
+		E2CA1A8A146B0DB00070B8B9 /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
+		E2CA1A8B146B0DB00070B8B9 /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
+		E2CA1A95146C49870070B8B9 /* PickerInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerInputTableViewCell.h; sourceTree = "<group>"; };
+		E2CA1A96146C49870070B8B9 /* PickerInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerInputTableViewCell.m; sourceTree = "<group>"; };
+		E2CA1A99146C4CD90070B8B9 /* SimplePickerInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePickerInputTableViewCell.h; sourceTree = "<group>"; };
+		E2CA1A9A146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePickerInputTableViewCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E2CA1A5A146B09E00070B8B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CA1A62146B09E00070B8B9 /* UIKit.framework in Frameworks */,
+				E2CA1A64146B09E00070B8B9 /* Foundation.framework in Frameworks */,
+				E2CA1A66146B09E00070B8B9 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E2CA1A52146B09E00070B8B9 = {
+			isa = PBXGroup;
+			children = (
+				E2CA1A67146B09E00070B8B9 /* PickerCellDemo */,
+				E2CA1A60146B09E00070B8B9 /* Frameworks */,
+				E2CA1A5E146B09E00070B8B9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E2CA1A5E146B09E00070B8B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2CA1A5D146B09E00070B8B9 /* PickerCellDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E2CA1A60146B09E00070B8B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2CA1A61146B09E00070B8B9 /* UIKit.framework */,
+				E2CA1A63146B09E00070B8B9 /* Foundation.framework */,
+				E2CA1A65146B09E00070B8B9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2CA1A67146B09E00070B8B9 /* PickerCellDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E2CA1A70146B09E10070B8B9 /* AppDelegate.h */,
+				E2CA1A71146B09E10070B8B9 /* AppDelegate.m */,
+				E2CA1A73146B09E10070B8B9 /* MainStoryboard_iPhone.storyboard */,
+				E2CA1A76146B09E10070B8B9 /* MainStoryboard_iPad.storyboard */,
+				E2CA1A79146B09E10070B8B9 /* ViewController.h */,
+				E2CA1A7A146B09E10070B8B9 /* ViewController.m */,
+				E2CA1A84146B0A550070B8B9 /* DateInputTableViewCell.h */,
+				E2CA1A85146B0A550070B8B9 /* DateInputTableViewCell.m */,
+				E2CA1A87146B0CC70070B8B9 /* StringInputTableViewCell.h */,
+				E2CA1A88146B0CC80070B8B9 /* StringInputTableViewCell.m */,
+				E29FBE07146BAF830090B25A /* IntegerInputTableViewCell.h */,
+				E29FBE08146BAF830090B25A /* IntegerInputTableViewCell.m */,
+				E2CA1A95146C49870070B8B9 /* PickerInputTableViewCell.h */,
+				E2CA1A96146C49870070B8B9 /* PickerInputTableViewCell.m */,
+				E2CA1A99146C4CD90070B8B9 /* SimplePickerInputTableViewCell.h */,
+				E2CA1A9A146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m */,
+				E2CA1A68146B09E00070B8B9 /* Supporting Files */,
+			);
+			path = PickerCellDemo;
+			sourceTree = "<group>";
+		};
+		E2CA1A68146B09E00070B8B9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E2CA1A69146B09E00070B8B9 /* PickerCellDemo-Info.plist */,
+				E2CA1A6A146B09E10070B8B9 /* InfoPlist.strings */,
+				E2CA1A6D146B09E10070B8B9 /* main.m */,
+				E2CA1A6F146B09E10070B8B9 /* PickerCellDemo-Prefix.pch */,
+				E2CA1A8A146B0DB00070B8B9 /* UIColor+Custom.m */,
+				E2CA1A8B146B0DB00070B8B9 /* UIColor+Custom.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2CA1A5C146B09E00070B8B9 /* PickerCellDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2CA1A7E146B09E10070B8B9 /* Build configuration list for PBXNativeTarget "PickerCellDemo" */;
+			buildPhases = (
+				E2CA1A59146B09E00070B8B9 /* Sources */,
+				E2CA1A5A146B09E00070B8B9 /* Frameworks */,
+				E2CA1A5B146B09E00070B8B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PickerCellDemo;
+			productName = PickerCellDemo;
+			productReference = E2CA1A5D146B09E00070B8B9 /* PickerCellDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E2CA1A54146B09E00070B8B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E2CA1A57146B09E00070B8B9 /* Build configuration list for PBXProject "PickerCellDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E2CA1A52146B09E00070B8B9;
+			productRefGroup = E2CA1A5E146B09E00070B8B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2CA1A5C146B09E00070B8B9 /* PickerCellDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2CA1A5B146B09E00070B8B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CA1A6C146B09E10070B8B9 /* InfoPlist.strings in Resources */,
+				E2CA1A75146B09E10070B8B9 /* MainStoryboard_iPhone.storyboard in Resources */,
+				E2CA1A78146B09E10070B8B9 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2CA1A59146B09E00070B8B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CA1A6E146B09E10070B8B9 /* main.m in Sources */,
+				E2CA1A72146B09E10070B8B9 /* AppDelegate.m in Sources */,
+				E2CA1A7B146B09E10070B8B9 /* ViewController.m in Sources */,
+				E2CA1A86146B0A550070B8B9 /* DateInputTableViewCell.m in Sources */,
+				E2CA1A89146B0CC80070B8B9 /* StringInputTableViewCell.m in Sources */,
+				E2CA1A8C146B0DB00070B8B9 /* UIColor+Custom.m in Sources */,
+				E29FBE09146BAF830090B25A /* IntegerInputTableViewCell.m in Sources */,
+				E2CA1A97146C49870070B8B9 /* PickerInputTableViewCell.m in Sources */,
+				E2CA1A9B146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E2CA1A6A146B09E10070B8B9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2CA1A6B146B09E10070B8B9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E2CA1A73146B09E10070B8B9 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2CA1A74146B09E10070B8B9 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		E2CA1A76146B09E10070B8B9 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2CA1A77146B09E10070B8B9 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E2CA1A7C146B09E10070B8B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E2CA1A7D146B09E10070B8B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2CA1A7F146B09E10070B8B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PickerCellDemo/PickerCellDemo-Prefix.pch";
+				INFOPLIST_FILE = "PickerCellDemo/PickerCellDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E2CA1A80146B09E10070B8B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PickerCellDemo/PickerCellDemo-Prefix.pch";
+				INFOPLIST_FILE = "PickerCellDemo/PickerCellDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E2CA1A57146B09E00070B8B9 /* Build configuration list for PBXProject "PickerCellDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2CA1A7C146B09E10070B8B9 /* Debug */,
+				E2CA1A7D146B09E10070B8B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2CA1A7E146B09E10070B8B9 /* Build configuration list for PBXNativeTarget "PickerCellDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2CA1A7F146B09E10070B8B9 /* Debug */,
+				E2CA1A80146B09E10070B8B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E2CA1A54146B09E00070B8B9 /* Project object */;
+}
