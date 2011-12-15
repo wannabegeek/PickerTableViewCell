@@ -81,7 +81,7 @@
 		[delegate tableViewCell:self didEndEditingWithString:self.stringValue];
 	}
 	UITableView *tableView = (UITableView *)self.superview;
-	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 }
 
 - (void)layoutSubviews {

@@ -106,7 +106,7 @@
 		// Nothing to do
 	}
 	UITableView *tableView = (UITableView *)self.superview;
-	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
 }
 
@@ -150,7 +150,7 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
 	UITableView *tableView = (UITableView *)self.superview;
-	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	[self resignFirstResponder];
 }
 
