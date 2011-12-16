@@ -79,6 +79,7 @@
 }
 
 - (BOOL)becomeFirstResponder {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		CGSize pickerSize = [self.picker sizeThatFits:CGSizeZero];
 		CGRect frame = self.picker.frame;
@@ -86,7 +87,6 @@
 		self.picker.frame = frame;
 		popoverController.popoverContentSize = pickerSize;
 		[popoverController presentPopoverFromRect:self.detailTextLabel.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 		// resign the current first responder
 		for (UIView *subview in self.superview.subviews) {
 			if ([subview isFirstResponder]) {
@@ -95,16 +95,13 @@
 		}
 		return NO;
 	} else {
+		[self.picker setNeedsLayout];
 	}
 	return [super becomeFirstResponder];
 }
 
 - (BOOL)resignFirstResponder {
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-	} else {
-		// Nothing to do
-	}
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 	UITableView *tableView = (UITableView *)self.superview;
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
@@ -122,6 +119,8 @@
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		// we should only get this call if the popover is visible
 		[popoverController presentPopoverFromRect:self.detailTextLabel.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+	} else {
+		[self.picker setNeedsLayout];
 	}
 }
 
