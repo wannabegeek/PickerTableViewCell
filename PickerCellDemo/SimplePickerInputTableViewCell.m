@@ -69,7 +69,7 @@ __strong NSArray *values = nil;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-	return pickerView.bounds.size.width - 20.0f;
+	return 300.0f; //pickerView.bounds.size.width - 20.0f;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
