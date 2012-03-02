@@ -13,6 +13,7 @@
 @protocol DateInputTableViewCellDelegate <NSObject>
 @optional
 - (void)tableViewCell:(DateInputTableViewCell *)cell didEndEditingWithDate:(NSDate *)value;
+- (void)tableViewCell:(DateInputTableViewCell *)cell didEndEditingWithDuration:(NSTimeInterval)value;
 @end
 
 @interface DateInputTableViewCell : UITableViewCell <UIPopoverControllerDelegate> {
@@ -21,6 +22,7 @@
 }
 
 @property (nonatomic, strong) NSDate *dateValue;
+@property (nonatomic, assign) NSTimeInterval timerValue;
 @property (nonatomic, assign) UIDatePickerMode datePickerMode;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) UIDatePicker *datePicker;
@@ -29,5 +31,6 @@
 - (void)setMaxDate:(NSDate *)max;
 - (void)setMinDate:(NSDate *)min;
 - (void)setMinuteInterval:(NSUInteger)value;
+- (NSString *)timerStringValue;
 
 @end
