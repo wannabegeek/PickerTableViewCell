@@ -14,6 +14,7 @@
 @synthesize dateValue;
 @synthesize dateFormatter;
 @synthesize datePicker;
+@synthesize timerValue = _timerValue;
 
 - (void)initalizeInputView {
 	dateValue = [NSDate date];
@@ -40,14 +41,18 @@
 	self.dateFormatter.timeStyle = NSDateFormatterNoStyle;
 	self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
 	
-	self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
+	if (self.datePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
+        self.detailTextLabel.text = [self timerStringValue];
+    } else {
+        self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
+    }
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-	[self initalizeInputView];
+        [self initalizeInputView];
     }
     return self;
 }
@@ -55,7 +60,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-	[self initalizeInputView];
+        [self initalizeInputView];
     }
     return self;
 }
@@ -108,7 +113,14 @@
 	} else {
 		// nothing to do
 	}
-	return [super becomeFirstResponder];
+    
+    if (self.datePickerMode == UIDatePickerModeCountDownTimer) {
+        self.datePicker.countDownDuration = self.timerValue;
+    } else {
+        self.datePicker.date = self.dateValue;
+    }
+    
+    return [super becomeFirstResponder];
 }
 
 - (BOOL)resignFirstResponder {
@@ -132,14 +144,26 @@
 
 - (void)setDateValue:(NSDate *)value {
 	dateValue = value;
-	self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
+    if (self.datePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
+        // self.detailTextLabel.text = [self timerStringValue];
+    } else {
+        self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
+    }
 }
 
 - (void)setDatePickerMode:(UIDatePickerMode)mode {
 	self.datePicker.datePickerMode = mode;
 	self.dateFormatter.dateStyle = (mode==UIDatePickerModeDate||mode==UIDatePickerModeDateAndTime)?NSDateFormatterMediumStyle:NSDateFormatterNoStyle;
 	self.dateFormatter.timeStyle = (mode==UIDatePickerModeTime||mode==UIDatePickerModeDateAndTime)?NSDateFormatterShortStyle:NSDateFormatterNoStyle;
-	self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
+    if (self.datePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
+        // self.dateValue = nil; // Causes crash
+        self.timerValue = 60.0;
+        self.detailTextLabel.text = [self timerStringValue];
+    } else {
+        self.dateValue = [NSDate date];
+        self.timerValue = 0;
+        self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
+    }
 }
 
 - (UIDatePickerMode)datePickerMode {
@@ -161,9 +185,14 @@
 
 - (void)dateChanged:(id)sender {
 	self.dateValue = ((UIDatePicker *)sender).date;
-
-	if (delegate && self.dateValue && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithDate:)]) {
-		[delegate tableViewCell:self didEndEditingWithDate:self.dateValue];
+    self.timerValue = ((UIDatePicker *)sender).countDownDuration;
+    
+	if (delegate && self.dateValue) {
+        if (self.datePicker.datePickerMode == UIDatePickerModeCountDownTimer && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithDuration:)]) {
+            [delegate tableViewCell:self didEndEditingWithDuration:self.timerValue];
+        } else if ([delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithDate:)]) {
+            [delegate tableViewCell:self didEndEditingWithDate:self.dateValue];
+        }
 	}
 }
 
@@ -181,6 +210,36 @@
 		// we should only get this call if the popover is visible
 		[popoverController presentPopoverFromRect:self.detailTextLabel.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 	}
+}
+
+- (NSTimeInterval)timerValue {
+    return self.datePicker.countDownDuration;
+}
+
+- (void)setTimerValue:(NSTimeInterval)timerValue {
+    datePicker.countDownDuration = timerValue;
+    _timerValue = timerValue;
+    if (self.datePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
+        self.detailTextLabel.text = [self timerStringValue];
+    } else {
+        // self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
+    }
+}
+
+- (NSString *)timerStringValue {
+    NSTimeInterval time = self.timerValue;
+    NSString *result = nil;
+    
+    if (time >= 3600.0) {
+        result = [NSString stringWithFormat:@"%uhr, %umin ", (int)(time / 3600.0), (int)((time / 60.0) - (floor(time / 3600.0) * 60.0))];
+    } else if (time >= 60.0) {
+        result = [NSString stringWithFormat:@"%umin       ", (int)(time / 60.0)];
+    } else {
+        result = [NSString stringWithFormat:@"%usec       ", (int)time];
+    } // The padding at the end makes it impossible for the detail label to trim the text
+    
+    // NSLog(@"%@", result);
+    return result;
 }
 
 #pragma mark -
