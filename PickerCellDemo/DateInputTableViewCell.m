@@ -217,9 +217,10 @@
 }
 
 - (void)setTimerValue:(NSTimeInterval)timerValue {
-    datePicker.countDownDuration = timerValue;
-    _timerValue = timerValue;
     if (self.datePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
+		datePicker.countDownDuration = timerValue;
+		_timerValue = timerValue;
+
         self.detailTextLabel.text = [self timerStringValue];
     } else {
         // self.detailTextLabel.text = [self.dateFormatter stringFromDate:self.dateValue];
