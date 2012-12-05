@@ -88,11 +88,7 @@
 		popoverController.popoverContentSize = pickerSize;
 		[popoverController presentPopoverFromRect:self.detailTextLabel.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 		// resign the current first responder
-		for (UIView *subview in self.superview.subviews) {
-			if ([subview isFirstResponder]) {
-				[subview resignFirstResponder];
-			}
-		}
+		[self.superview endEditing:YES];
 		return NO;
 	} else {
 		[self.picker setNeedsLayout];
