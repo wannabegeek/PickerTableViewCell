@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C17205D17A91E7A00D94131 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17205C17A91E7A00D94131 /* Default-568h@2x.png */; };
+		4C17206017A91E9E00D94131 /* CustomUIPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17205F17A91E9E00D94131 /* CustomUIPickerView.m */; };
 		E29FBE09146BAF830090B25A /* IntegerInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FBE08146BAF830090B25A /* IntegerInputTableViewCell.m */; };
 		E2CA1A62146B09E00070B8B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CA1A61146B09E00070B8B9 /* UIKit.framework */; };
 		E2CA1A64146B09E00070B8B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CA1A63146B09E00070B8B9 /* Foundation.framework */; };
@@ -25,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C17205C17A91E7A00D94131 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4C17205E17A91E9E00D94131 /* CustomUIPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIPickerView.h; sourceTree = "<group>"; };
+		4C17205F17A91E9E00D94131 /* CustomUIPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIPickerView.m; sourceTree = "<group>"; };
 		E29FBE07146BAF830090B25A /* IntegerInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerInputTableViewCell.h; sourceTree = "<group>"; };
 		E29FBE08146BAF830090B25A /* IntegerInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegerInputTableViewCell.m; sourceTree = "<group>"; };
 		E2CA1A5D146B09E00070B8B9 /* PickerCellDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickerCellDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +75,7 @@
 		E2CA1A52146B09E00070B8B9 = {
 			isa = PBXGroup;
 			children = (
+				4C17205C17A91E7A00D94131 /* Default-568h@2x.png */,
 				E2CA1A67146B09E00070B8B9 /* PickerCellDemo */,
 				E2CA1A60146B09E00070B8B9 /* Frameworks */,
 				E2CA1A5E146B09E00070B8B9 /* Products */,
@@ -97,6 +103,8 @@
 		E2CA1A67146B09E00070B8B9 /* PickerCellDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C17205E17A91E9E00D94131 /* CustomUIPickerView.h */,
+				4C17205F17A91E9E00D94131 /* CustomUIPickerView.m */,
 				E2CA1A70146B09E10070B8B9 /* AppDelegate.h */,
 				E2CA1A71146B09E10070B8B9 /* AppDelegate.m */,
 				E2CA1A73146B09E10070B8B9 /* MainStoryboard_iPhone.storyboard */,
@@ -157,7 +165,7 @@
 		E2CA1A54146B09E00070B8B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = E2CA1A57146B09E00070B8B9 /* Build configuration list for PBXProject "PickerCellDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -184,6 +192,7 @@
 				E2CA1A6C146B09E10070B8B9 /* InfoPlist.strings in Resources */,
 				E2CA1A75146B09E10070B8B9 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E2CA1A78146B09E10070B8B9 /* MainStoryboard_iPad.storyboard in Resources */,
+				4C17205D17A91E7A00D94131 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +212,7 @@
 				E29FBE09146BAF830090B25A /* IntegerInputTableViewCell.m in Sources */,
 				E2CA1A97146C49870070B8B9 /* PickerInputTableViewCell.m in Sources */,
 				E2CA1A9B146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m in Sources */,
+				4C17206017A91E9E00D94131 /* CustomUIPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +252,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -255,6 +269,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
@@ -268,12 +283,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

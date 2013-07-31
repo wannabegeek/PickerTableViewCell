@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomUIPickerView.h"
 
 @class PickerInputTableViewCell;
 
@@ -17,6 +18,6 @@
 	UIToolbar *inputAccessoryView;
 }
 
-@property (nonatomic, strong) UIPickerView *picker;
+@property (nonatomic, strong) CustomUIPickerView *picker;
 
 @end
