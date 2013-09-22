@@ -93,9 +93,32 @@
 	if (valueChanged && delegate && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithInteger:)]) {
 		[delegate tableViewCell:self didEndEditingWithInteger:self.numberValue];
 	}
-	UITableView *tableView = (UITableView *)self.superview;
+	UITableView *tableView = [self findTableViewParent];
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
+}
+
+-(UITableView *)findTableViewParent {
+    
+    UITableView *tableView = (UITableView *)self.superview;
+    
+    // In iOS7, the cell's superview is UITableViewWrapperView which does support indexPathForCell.
+    // UITableViewWrapperView's superview is a UITableView (based on one test) currently.
+    // Traverse up the UI change until we get to a UITableView or a UIWindow (root)
+    while (![tableView isKindOfClass:[UITableView class]] && ![tableView isKindOfClass:[UIWindow class]]) {
+        tableView = (UITableView *)tableView.superview;
+    }
+    
+    // If we reached the root view, then there is an issue.
+    if ([tableView isKindOfClass:[UIWindow class]]) {
+        NSException* myException = [NSException
+                                    exceptionWithName:@"UITableViewNotFoundException"
+                                    reason:@"Unable to determine parent UITableView of cell. "
+                                    userInfo:nil];
+        @throw myException;
+    }
+    
+    return tableView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
