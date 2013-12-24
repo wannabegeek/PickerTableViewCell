@@ -38,6 +38,8 @@
 	}
 	
 	self.detailTextLabel.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:self.numberValue]];
+	self.detailTextLabel.textColor = [UIColor blackColor];
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -93,7 +95,12 @@
 	if (valueChanged && delegate && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithInteger:)]) {
 		[delegate tableViewCell:self didEndEditingWithInteger:self.numberValue];
 	}
-	UITableView *tableView = (UITableView *)self.superview;
+	UITableView *tableView = nil;
+	if ([self.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview;
+	} else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview.superview;
+	}
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
 }
@@ -103,6 +110,9 @@
     [super setSelected:selected animated:animated];
 	if (selected) {
 		[self becomeFirstResponder];
+		self.detailTextLabel.textColor = [UIColor redColor];
+	} else {
+		self.detailTextLabel.textColor = [UIColor blackColor];
 	}
 }
 

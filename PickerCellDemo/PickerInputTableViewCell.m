@@ -16,7 +16,9 @@
 	self.picker = [[UIPickerView alloc] initWithFrame:CGRectZero];
 	self.picker.showsSelectionIndicator = YES;
 	self.picker.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-	
+	self.detailTextLabel.textColor = [UIColor blackColor];
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		UIViewController *popoverContent = [[UIViewController alloc] init];
 		popoverContent.view = self.picker;
@@ -102,7 +104,12 @@
 
 - (BOOL)resignFirstResponder {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-	UITableView *tableView = (UITableView *)self.superview;
+	UITableView *tableView = nil;
+	if ([self.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview;
+	} else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview.superview;
+	}
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
 }
@@ -112,6 +119,9 @@
     [super setSelected:selected animated:animated];
 	if (selected) {
 		[self becomeFirstResponder];
+		self.detailTextLabel.textColor = [UIColor redColor];
+	} else {
+		self.detailTextLabel.textColor = [UIColor blackColor];
 	}
 }
 
@@ -148,7 +158,12 @@
 #pragma mark UIPopoverControllerDelegate Protocol Methods
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-	UITableView *tableView = (UITableView *)self.superview;
+	UITableView *tableView = nil;
+	if ([self.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview;
+	} else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview.superview;
+	}
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	[self resignFirstResponder];
 }

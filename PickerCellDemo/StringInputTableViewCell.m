@@ -20,8 +20,8 @@
 	self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
 	self.textField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-	self.textField.textAlignment = UITextAlignmentRight;
-	self.textField.textColor = [UIColor blueTextColor];
+	self.textField.textAlignment = NSTextAlignmentRight;
+	self.textField.textColor = [UIColor blackColor];
 	self.textField.font = [UIFont systemFontOfSize:17.0f];
 	self.textField.clearButtonMode = UITextFieldViewModeNever;
 	self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -80,7 +80,12 @@
 	if (delegate && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithString:)]) {
 		[delegate tableViewCell:self didEndEditingWithString:self.stringValue];
 	}
-	UITableView *tableView = (UITableView *)self.superview;
+	UITableView *tableView = nil;
+	if ([self.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview;
+	} else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview.superview;
+	}
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 }
 
@@ -92,9 +97,9 @@
 		CGSize textSize = [self.textLabel sizeThatFits:CGSizeZero];
 		editFrame.origin.x += textSize.width + 10;
 		editFrame.size.width -= textSize.width + 10;
-		self.textField.textAlignment = UITextAlignmentRight;
+		self.textField.textAlignment = NSTextAlignmentRight;
 	} else {
-		self.textField.textAlignment = UITextAlignmentLeft;
+		self.textField.textAlignment = NSTextAlignmentLeft;
 	}
 	
 	self.textField.frame = editFrame;
