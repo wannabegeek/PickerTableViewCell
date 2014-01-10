@@ -16,7 +16,7 @@
 	self.picker = [[UIPickerView alloc] initWithFrame:CGRectZero];
 	self.picker.showsSelectionIndicator = YES;
 	self.picker.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-	self.detailTextLabel.textColor = [UIColor blackColor];
+	self.detailTextLabel.textColor = [UIColor darkTextColor];
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -119,9 +119,9 @@
     [super setSelected:selected animated:animated];
 	if (selected) {
 		[self becomeFirstResponder];
-		self.detailTextLabel.textColor = [UIColor redColor];
+		self.detailTextLabel.textColor = self.tintColor;
 	} else {
-		self.detailTextLabel.textColor = [UIColor blackColor];
+		self.detailTextLabel.textColor = [UIColor darkTextColor];
 	}
 }
 

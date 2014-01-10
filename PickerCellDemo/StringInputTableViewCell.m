@@ -21,7 +21,7 @@
 	self.textField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
 	self.textField.textAlignment = NSTextAlignmentRight;
-	self.textField.textColor = [UIColor blackColor];
+	self.textField.textColor = [UIColor darkTextColor];
 	self.textField.font = [UIFont systemFontOfSize:17.0f];
 	self.textField.clearButtonMode = UITextFieldViewModeNever;
 	self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;

@@ -38,7 +38,7 @@
 	}
 	
 	self.detailTextLabel.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:self.numberValue]];
-	self.detailTextLabel.textColor = [UIColor blackColor];
+	self.detailTextLabel.textColor = [UIColor darkTextColor];
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -110,9 +110,9 @@
     [super setSelected:selected animated:animated];
 	if (selected) {
 		[self becomeFirstResponder];
-		self.detailTextLabel.textColor = [UIColor redColor];
+		self.detailTextLabel.textColor = self.tintColor;
 	} else {
-		self.detailTextLabel.textColor = [UIColor blackColor];
+		self.detailTextLabel.textColor = [UIColor darkTextColor];
 	}
 }
 
