@@ -17,9 +17,12 @@
 
 @interface SimplePickerInputTableViewCell : PickerInputTableViewCell <UIPickerViewDataSource, UIPickerViewDelegate> {
 	NSString *value;
+	NSArray *values;
 }
 
 @property (nonatomic, strong) NSString *value;
 @property (weak) IBOutlet id <SimplePickerInputTableViewCellDelegate> delegate;
+
+- (void)setup:(NSArray *)list selectedRow:(int)selectedRow;
 
 @end

@@ -13,31 +13,36 @@
 @synthesize delegate;
 @synthesize value;
 
-__strong NSArray *values = nil;
-
-+ (void)initialize {
+- (void)initialize {
 	values = [NSArray arrayWithObjects:@"Value 1", @"Value 2", @"Value 3", @"Value 4", @"Value 5", nil];
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+	if (self) {
+		// Initialization code
 		self.picker.delegate = self;
 		self.picker.dataSource = self;
-    }
-    return self;
+		[self initialize];
+	}
+	return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        // Initialization code
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		// Initialization code
 		self.picker.delegate = self;
 		self.picker.dataSource = self;
-    }
-    return self;
+		[self initialize];
+	}
+	return self;
+}
+
+- (void)setup:(NSArray *)list selectedRow:(int)selectedRow {
+	values = list;
+	[self.picker selectRow:selectedRow inComponent:0 animated:YES];
+	[self pickerView:self.picker didSelectRow:selectedRow inComponent:0];
 }
 
 - (void)setValue:(NSString *)v {

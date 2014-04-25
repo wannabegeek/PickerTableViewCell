@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>738C18F0-CD0C-44B8-B996-51926293FC53</string>
+	<string>85809DE3-8E78-4A0B-B7A9-F899E47FCDBD</string>
 	<key>IDESourceControlProjectName</key>
 	<string>PickerCellDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>BDD35BD1-32F9-441D-B104-6F8F7F5ED22C</key>
-		<string>https://github.com/wannabegeek/PickerTableViewCell.git</string>
+		<key>1B7AAA05-5FAE-4577-A0F4-7AFDB12EB344</key>
+		<string>https://github.com/aqibmumtaz/PickerTableViewCell.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PickerCellDemo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>BDD35BD1-32F9-441D-B104-6F8F7F5ED22C</key>
+		<key>1B7AAA05-5FAE-4577-A0F4-7AFDB12EB344</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/wannabegeek/PickerTableViewCell.git</string>
+	<string>https://github.com/aqibmumtaz/PickerTableViewCell.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>BDD35BD1-32F9-441D-B104-6F8F7F5ED22C</string>
+	<string>1B7AAA05-5FAE-4577-A0F4-7AFDB12EB344</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>BDD35BD1-32F9-441D-B104-6F8F7F5ED22C</string>
+			<string>1B7AAA05-5FAE-4577-A0F4-7AFDB12EB344</string>
 			<key>IDESourceControlWCCName</key>
 			<string>PickerTableViewCell</string>
 		</dict>

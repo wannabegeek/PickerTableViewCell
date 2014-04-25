@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2592179190AB42E008C675C /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A2592178190AB42E008C675C /* UIColor+Custom.m */; };
 		E29FBE09146BAF830090B25A /* IntegerInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FBE08146BAF830090B25A /* IntegerInputTableViewCell.m */; };
 		E2CA1A62146B09E00070B8B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CA1A61146B09E00070B8B9 /* UIKit.framework */; };
 		E2CA1A64146B09E00070B8B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CA1A63146B09E00070B8B9 /* Foundation.framework */; };
@@ -19,12 +20,13 @@
 		E2CA1A7B146B09E10070B8B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A7A146B09E10070B8B9 /* ViewController.m */; };
 		E2CA1A86146B0A550070B8B9 /* DateInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A85146B0A550070B8B9 /* DateInputTableViewCell.m */; };
 		E2CA1A89146B0CC80070B8B9 /* StringInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A88146B0CC80070B8B9 /* StringInputTableViewCell.m */; };
-		E2CA1A8C146B0DB00070B8B9 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A8A146B0DB00070B8B9 /* UIColor+Custom.m */; };
 		E2CA1A97146C49870070B8B9 /* PickerInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A96146C49870070B8B9 /* PickerInputTableViewCell.m */; };
 		E2CA1A9B146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA1A9A146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A2592177190AB42E008C675C /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
+		A2592178190AB42E008C675C /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
 		E29FBE07146BAF830090B25A /* IntegerInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerInputTableViewCell.h; sourceTree = "<group>"; };
 		E29FBE08146BAF830090B25A /* IntegerInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegerInputTableViewCell.m; sourceTree = "<group>"; };
 		E2CA1A5D146B09E00070B8B9 /* PickerCellDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickerCellDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,8 +47,6 @@
 		E2CA1A85146B0A550070B8B9 /* DateInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateInputTableViewCell.m; sourceTree = "<group>"; };
 		E2CA1A87146B0CC70070B8B9 /* StringInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringInputTableViewCell.h; sourceTree = "<group>"; };
 		E2CA1A88146B0CC80070B8B9 /* StringInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringInputTableViewCell.m; sourceTree = "<group>"; };
-		E2CA1A8A146B0DB00070B8B9 /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
-		E2CA1A8B146B0DB00070B8B9 /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
 		E2CA1A95146C49870070B8B9 /* PickerInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerInputTableViewCell.h; sourceTree = "<group>"; };
 		E2CA1A96146C49870070B8B9 /* PickerInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerInputTableViewCell.m; sourceTree = "<group>"; };
 		E2CA1A99146C4CD90070B8B9 /* SimplePickerInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePickerInputTableViewCell.h; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 				E2CA1A6A146B09E10070B8B9 /* InfoPlist.strings */,
 				E2CA1A6D146B09E10070B8B9 /* main.m */,
 				E2CA1A6F146B09E10070B8B9 /* PickerCellDemo-Prefix.pch */,
-				E2CA1A8A146B0DB00070B8B9 /* UIColor+Custom.m */,
-				E2CA1A8B146B0DB00070B8B9 /* UIColor+Custom.h */,
+				A2592177190AB42E008C675C /* UIColor+Custom.h */,
+				A2592178190AB42E008C675C /* UIColor+Custom.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 				E2CA1A7B146B09E10070B8B9 /* ViewController.m in Sources */,
 				E2CA1A86146B0A550070B8B9 /* DateInputTableViewCell.m in Sources */,
 				E2CA1A89146B0CC80070B8B9 /* StringInputTableViewCell.m in Sources */,
-				E2CA1A8C146B0DB00070B8B9 /* UIColor+Custom.m in Sources */,
+				A2592179190AB42E008C675C /* UIColor+Custom.m in Sources */,
 				E29FBE09146BAF830090B25A /* IntegerInputTableViewCell.m in Sources */,
 				E2CA1A97146C49870070B8B9 /* PickerInputTableViewCell.m in Sources */,
 				E2CA1A9B146C4CD90070B8B9 /* SimplePickerInputTableViewCell.m in Sources */,
