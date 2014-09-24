@@ -10,36 +10,51 @@
 
 @implementation PickerInputTableViewCell
 
+static const float kAccessoryViewHeight = 44.0;
+
 @synthesize picker;
 
 - (void)initalizeInputView {
-	self.picker = [[CustomUIPickerView alloc] initWithFrame:CGRectZero];
+	self.picker = [[UIPickerView alloc] initWithFrame:CGRectZero];
 	self.picker.showsSelectionIndicator = YES;
 	self.picker.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	self.detailTextLabel.textColor = [UIColor darkTextColor];
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		UIViewController *popoverContent = [[UIViewController alloc] init];
-		popoverContent.view = self.picker;
-		popoverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
-		popoverController.delegate = self;
+		
+        // Setup the popover's view controller
+        popoverViewController = [[UIViewController alloc] init];
+		popoverViewController.view = self.picker;
+        popoverViewController.modalPresentationStyle = UIModalPresentationPopover;
+
+        // Setup the delegate for UIPopoverPresentationControllerDelegate to ensure the following method
+        //   to be called which will ensure that the popover is always displayed halfway across the width
+        //   of the table view cell:
+        //   - (void)popoverPresentationController:(UIPopoverPresentationController *)popoverPresentationController
+        //             willRepositionPopoverToRect:(inout CGRect *)rect
+        //                                  inView:(inout UIView **)view
+        popoverViewController.popoverPresentationController.delegate = self;
 	}
 }
 
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+   
     if (self) {
 		[self initalizeInputView];
     }
+    
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
+    
     if (self) {
 		[self initalizeInputView];
     }
+    
     return self;
 }
 
@@ -61,16 +76,17 @@
 			inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 			[inputAccessoryView sizeToFit];
 			CGRect frame = inputAccessoryView.frame;
-			frame.size.height = 44.0f;
+			frame.size.height = kAccessoryViewHeight;
 			inputAccessoryView.frame = frame;
 			
-			UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+			UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
 			UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 			
 			NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
 			[inputAccessoryView setItems:array];
 		}
-		return inputAccessoryView;
+	
+        return inputAccessoryView;
 	}
 }
 
@@ -80,37 +96,47 @@
 
 - (BOOL)becomeFirstResponder {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		CGSize pickerSize = [self.picker sizeThatFits:CGSizeZero];
-		CGRect frame = self.picker.frame;
-		frame.size = pickerSize;
-		self.picker.frame = frame;
-		popoverController.popoverContentSize = pickerSize;
-		[popoverController presentPopoverFromRect:self.detailTextLabel.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-		// resign the current first responder
-		for (UIView *subview in self.superview.subviews) {
-			if ([subview isFirstResponder]) {
-				[subview resignFirstResponder];
-			}
-		}
-		return NO;
+	
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self displayPopover];
+            
+        // Resign the current first responder
+        for (UIView *subview in self.superview.subviews) {
+            if ([subview isFirstResponder]) {
+                [subview resignFirstResponder];
+            }
+        }
+        
+        return NO;
 	} else {
 		[self.picker setNeedsLayout];
 	}
-	return [super becomeFirstResponder];
+	
+    return [super becomeFirstResponder];
 }
 
 - (BOOL)resignFirstResponder {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-	UITableView *tableView = [self findTableViewParent];
+	
+    // Code that the GitHub Repository did not use my solution in the below find and used the commented out code
+    UITableView *tableView = [self findTableViewParent];
+    /*
+     UITableView *tableView = nil;
+     if ([self.superview isKindOfClass:[UITableView class]]) {
+     tableView = (UITableView *)self.superview;
+     } else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+     tableView = (UITableView *)self.superview.superview;
+     }
+     */
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
-	return [super resignFirstResponder];
+	
+    return [super resignFirstResponder];
 }
 
--(UITableView *)findTableViewParent {
-    
+- (UITableView *)findTableViewParent {
+
     UITableView *tableView = (UITableView *)self.superview;
-    
+
     // In iOS7, the cell's superview is UITableViewWrapperView which does support indexPathForCell.
     // UITableViewWrapperView's superview is a UITableView (based on one test) currently.
     // Traverse up the UI change until we get to a UITableView or a UIWindow (root)
@@ -120,7 +146,7 @@
     
     // If we reached the root view, then there is an issue.
     if ([tableView isKindOfClass:[UIWindow class]]) {
-        NSException* myException = [NSException
+        NSException *myException = [NSException
                                     exceptionWithName:@"UITableViewNotFoundException"
                                     reason:@"Unable to determine parent UITableView of cell. "
                                     userInfo:nil];
@@ -130,21 +156,82 @@
     return tableView;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    // To handle duplicate calls to this method which appear to happen when selecting a table view cell on iPad.
+    //   https://stackoverflow.com/questions/5401226/uitableviewcell-selector-setselectedanimated-gets-called-many-times
+    //
+    // The resulting two calls to [self becomeFirstResponder] cause an app crash as the code attempts to draw two popovers
+    if (self.selected == selected) {
+        return;
+    }
+    
     [super setSelected:selected animated:animated];
-	if (selected) {
+	
+    if (selected) {
 		[self becomeFirstResponder];
+		self.detailTextLabel.textColor = self.tintColor;
+	} else {
+		self.detailTextLabel.textColor = [UIColor darkTextColor];
 	}
 }
 
-- (void)deviceDidRotate:(NSNotification*)notification {
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		// we should only get this call if the popover is visible
-		[popoverController presentPopoverFromRect:self.detailTextLabel.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-	} else {
+- (void)deviceDidRotate:(NSNotification *)notification {
+	
+
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // No additional logic needed as UIKit will redraw popover and the following method is used to ensure proper location
+        //   - (void)popoverPresentationController:(UIPopoverPresentationController *)popoverPresentationController
+        //             willRepositionPopoverToRect:(inout CGRect *)rect
+        //                                  inView:(inout UIView **)view
+    } else {
 		[self.picker setNeedsLayout];
 	}
+}
+
+- (void)displayPopover {
+    CGSize pickerSize = [self.picker sizeThatFits:CGSizeZero];
+    
+    popoverViewController.preferredContentSize = pickerSize;
+    
+    UITableView *tableView = [self findTableViewParent];
+    
+    UITableViewController *tableViewController = (UITableViewController *)tableView.dataSource;
+    
+    [tableViewController presentViewController:popoverViewController animated:YES completion:nil];
+    
+    // Get the popover presentation controller and configure it.
+    UIPopoverPresentationController *presentationController = [popoverViewController popoverPresentationController];
+    presentationController.sourceView = self;
+    
+    // Position the popover to be halfway across the table view cell
+    presentationController.sourceRect  = CGRectMake(self.frame.size.width / 2, self.frame.size.height, 0, 0);
+}
+
+#pragma mark -
+#pragma  mark UIPopoverPresentationControllerDelegate Protocol Methods
+
+- (void)popoverPresentationController:(UIPopoverPresentationController *)popoverPresentationController
+          willRepositionPopoverToRect:(inout CGRect *)rect
+                               inView:(inout UIView **)view {
+    
+    // Reposition the popover to be halfway across the table view cell
+    *rect = CGRectMake(self.frame.size.width / 2, self.frame.size.height, 0, 0);
+}
+
+// Not sure why this is needed.  App appears to works correctly w/o it
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    // Code that the GitHub Repository did not use my solution in the below find and used the commented out code
+    UITableView *tableView = [self findTableViewParent];
+    /*
+     UITableView *tableView = nil;
+     if ([self.superview isKindOfClass:[UITableView class]]) {
+     tableView = (UITableView *)self.superview;
+     } else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+     tableView = (UITableView *)self.superview.superview;
+     }
+     */
+    [tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
+    [self resignFirstResponder];
 }
 
 #pragma mark -
@@ -165,15 +252,6 @@
 }
 
 - (void)deleteBackward {
-}
-
-#pragma mark -
-#pragma mark UIPopoverControllerDelegate Protocol Methods
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-	UITableView *tableView = [self findTableViewParent];
-	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
-	[self resignFirstResponder];
 }
 
 @end

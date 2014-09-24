@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomUIPickerView.h"
 
 @class PickerInputTableViewCell;
 
+@interface PickerInputTableViewCell : UITableViewCell <UIKeyInput, UIPopoverPresentationControllerDelegate> {
+	// For iPad, the view controller which will contain the popover displayed
+    UIViewController *popoverViewController;
 
-@interface PickerInputTableViewCell : UITableViewCell <UIKeyInput, UIPopoverControllerDelegate> {
-	// For iPad
-	UIPopoverController *popoverController;
-	UIToolbar *inputAccessoryView;
+    // For iPhone
+    UIToolbar *inputAccessoryView;
 }
 
 @property (nonatomic, strong) CustomUIPickerView *picker;
