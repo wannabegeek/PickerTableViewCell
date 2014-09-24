@@ -38,6 +38,8 @@
 	}
 	
 	self.detailTextLabel.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:self.numberValue]];
+	self.detailTextLabel.textColor = [UIColor darkTextColor];
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -93,32 +95,14 @@
 	if (valueChanged && delegate && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithInteger:)]) {
 		[delegate tableViewCell:self didEndEditingWithInteger:self.numberValue];
 	}
-	UITableView *tableView = [self findTableViewParent];
+	UITableView *tableView = nil;
+	if ([self.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview;
+	} else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview.superview;
+	}
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
-}
-
--(UITableView *)findTableViewParent {
-    
-    UITableView *tableView = (UITableView *)self.superview;
-    
-    // In iOS7, the cell's superview is UITableViewWrapperView which does support indexPathForCell.
-    // UITableViewWrapperView's superview is a UITableView (based on one test) currently.
-    // Traverse up the UI change until we get to a UITableView or a UIWindow (root)
-    while (![tableView isKindOfClass:[UITableView class]] && ![tableView isKindOfClass:[UIWindow class]]) {
-        tableView = (UITableView *)tableView.superview;
-    }
-    
-    // If we reached the root view, then there is an issue.
-    if ([tableView isKindOfClass:[UIWindow class]]) {
-        NSException* myException = [NSException
-                                    exceptionWithName:@"UITableViewNotFoundException"
-                                    reason:@"Unable to determine parent UITableView of cell. "
-                                    userInfo:nil];
-        @throw myException;
-    }
-    
-    return tableView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -126,6 +110,9 @@
     [super setSelected:selected animated:animated];
 	if (selected) {
 		[self becomeFirstResponder];
+		self.detailTextLabel.textColor = self.tintColor;
+	} else {
+		self.detailTextLabel.textColor = [UIColor darkTextColor];
 	}
 }
 

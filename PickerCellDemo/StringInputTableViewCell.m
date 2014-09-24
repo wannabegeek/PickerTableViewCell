@@ -20,8 +20,8 @@
 	self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
 	self.textField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-	self.textField.textAlignment = UITextAlignmentRight;
-	self.textField.textColor = [UIColor blueTextColor];
+	self.textField.textAlignment = NSTextAlignmentRight;
+	self.textField.textColor = [UIColor darkTextColor];
 	self.textField.font = [UIFont systemFontOfSize:17.0f];
 	self.textField.clearButtonMode = UITextFieldViewModeNever;
 	self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -80,31 +80,13 @@
 	if (delegate && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithString:)]) {
 		[delegate tableViewCell:self didEndEditingWithString:self.stringValue];
 	}
-	UITableView *tableView = [self findTableViewParent];
+	UITableView *tableView = nil;
+	if ([self.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview;
+	} else if ([self.superview.superview isKindOfClass:[UITableView class]]) {
+		tableView = (UITableView *)self.superview.superview;
+	}
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
-}
-
--(UITableView *)findTableViewParent {
-    
-    UITableView *tableView = (UITableView *)self.superview;
-    
-    // In iOS7, the cell's superview is UITableViewWrapperView which does support indexPathForCell.
-    // UITableViewWrapperView's superview is a UITableView (based on one test) currently.
-    // Traverse up the UI change until we get to a UITableView or a UIWindow (root)
-    while (![tableView isKindOfClass:[UITableView class]] && ![tableView isKindOfClass:[UIWindow class]]) {
-        tableView = (UITableView *)tableView.superview;
-    }
-    
-    // If we reached the root view, then there is an issue.
-    if ([tableView isKindOfClass:[UIWindow class]]) {
-        NSException* myException = [NSException
-                                    exceptionWithName:@"UITableViewNotFoundException"
-                                    reason:@"Unable to determine parent UITableView of cell. "
-                                    userInfo:nil];
-        @throw myException;
-    }
-    
-    return tableView;
 }
 
 - (void)layoutSubviews {
@@ -115,9 +97,9 @@
 		CGSize textSize = [self.textLabel sizeThatFits:CGSizeZero];
 		editFrame.origin.x += textSize.width + 10;
 		editFrame.size.width -= textSize.width + 10;
-		self.textField.textAlignment = UITextAlignmentRight;
+		self.textField.textAlignment = NSTextAlignmentRight;
 	} else {
-		self.textField.textAlignment = UITextAlignmentLeft;
+		self.textField.textAlignment = NSTextAlignmentLeft;
 	}
 	
 	self.textField.frame = editFrame;

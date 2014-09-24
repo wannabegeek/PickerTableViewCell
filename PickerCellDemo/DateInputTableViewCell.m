@@ -129,32 +129,17 @@
 	} else {
 		// Nothing to do
 	}
-	UITableView *tableView = [self findTableViewParent];
+    UITableView *tableView;
+    if ([self.superview class] != [UITableView class])
+    {
+        tableView = (UITableView *)self.superview.superview;
+    }
+    else
+    {
+        tableView = (UITableView *)self.superview;
+    }
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
-}
-
--(UITableView *)findTableViewParent {
-    
-    UITableView *tableView = (UITableView *)self.superview;
-    
-    // In iOS7, the cell's superview is UITableViewWrapperView which does support indexPathForCell.
-    // UITableViewWrapperView's superview is a UITableView (based on one test) currently.
-    // Traverse up the UI change until we get to a UITableView or a UIWindow (root)
-    while (![tableView isKindOfClass:[UITableView class]] && ![tableView isKindOfClass:[UIWindow class]]) {
-        tableView = (UITableView *)tableView.superview;
-    }
-    
-    // If we reached the root view, then there is an issue.
-    if ([tableView isKindOfClass:[UIWindow class]]) {
-        NSException* myException = [NSException
-                                    exceptionWithName:@"UITableViewNotFoundException"
-                                    reason:@"Unable to determine parent UITableView of cell. "
-                                    userInfo:nil];
-        @throw myException;
-    }
-    
-    return tableView;
 }
 
 - (void)prepareForReuse {
@@ -278,7 +263,15 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        UITableView *tableView = [self findTableViewParent];
+		UITableView *tableView;
+        if ([self.superview class] != [UITableView class])
+        {
+            tableView = (UITableView *)self.superview.superview;
+        }
+        else
+        {
+            tableView = (UITableView *)self.superview;
+        }
 		[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 		[self resignFirstResponder];
 	}
